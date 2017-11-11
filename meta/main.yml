@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  owner: "NLM-OCCS"
+  company: "NLM"
+  license: BSD
+  min_ansible_version: 2.2
+  platforms:
+   - name: EL
+     versions:
+      - 7
+      - 6
+dependencies: []

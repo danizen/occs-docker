@@ -1,0 +1,13 @@
+---
+
+# Check whether centos extras is enabled
+
+# Install yum-utils
+
+# Embed https://download.docker.com/linux/centos/gpg into ansible role
+
+# install and accept the gpg key
+
+# Embed docker.repo into role or install from https://download.docker.com/linux/centos/docker-ce.repo with checksum verification
+
+# Install docker 

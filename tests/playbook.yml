@@ -1,0 +1,16 @@
+---
+
+# Test playbook for occsab-ruby
+
+- hosts: all
+  connection: local
+  become: true
+
+  roles:
+    - role: occs-docker
+      docker_enable_edge: true
+      docker_enable_testing: true
+
+  tasks:
+    - import_tasks: asserts.yml
+
