@@ -1,6 +1,5 @@
 ---
 
 docker_version: latest
-docker_package: docker-ce
 docker_enable_edge: false
-docker_enable_testing: false
+docker_enable_test: false

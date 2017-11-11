@@ -20,3 +20,32 @@
     src: docker-ce.repo
     dest: /etc/yum.repos.d/docker-ce.repo
 
+- name: enable docker edge repository
+  command: yum-config-manager --enable docker-ce-edge
+  when: docker_enable_edge|bool
+
+- name: enable docker testing repository
+  command: yum-config-manager --enable docker-ce-test
+  when: docker_enable_test|bool
+
+- name: install latest docker
+  yum:
+    name: docker-ce
+    state: latest
+    update_cache: yes
+  when: docker_version == 'latest'
+
+- name: install specific docker
+  yum:
+    name: docker-ce-{{ docker_version }}.ce
+    state: present
+    update_cache: yes
+    allow_downgrade: yes
+  when: docker_version != 'latest'
+
+- name: enable docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
