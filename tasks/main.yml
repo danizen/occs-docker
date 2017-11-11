@@ -1,13 +1,20 @@
 ---
+- name: install yum-utils
+  yum:
+    name: yum-utils
+    state: present
 
-# Check whether centos extras is enabled
+- name: install gpg key for docker repos
+  copy:
+    src: RPM-GPG-KEY-DOCKER-CE
+    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-DOCKER-CE
 
-# Install yum-utils
+- name: trust gpg key for docker repos
+  rpm-key:
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-DOCKER-CE
 
-# Embed https://download.docker.com/linux/centos/gpg into ansible role
+- name: install yum repository for docker
+  copy:
+    src: docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
 
-# install and accept the gpg key
-
-# Embed docker.repo into role or install from https://download.docker.com/linux/centos/docker-ce.repo with checksum verification
-
-# Install docker 
